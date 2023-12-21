@@ -6,6 +6,14 @@ function addContact() {
   var landline = document.getElementById('landline').value;
   var website = document.getElementById('website').value;
   var address = document.getElementById('address').value;
+  if (!isValidMobile(mobile)) {
+    alert("Please enter a valid mobile number.");
+    return;
+  }
+  if (!isValidEmail(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
   let details = {};
  details.name = name;
  details.email = email;
@@ -154,7 +162,15 @@ function deleteButton() {
 }
 window.onload = function () {
   displayContact();
-};
+}
+function isValidEmail(email) {
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+function isValidMobile(mobile) {
+  var mobileRegex = /^\d{10}$/;
+  return mobileRegex.test(mobile);
+}
 function openDialog() {
   var dialogBox = document.getElementById('dialogBox');
   dialogBox.classList.add('dialog-open');

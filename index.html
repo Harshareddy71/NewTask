@@ -13,85 +13,83 @@
 
 <body onclick="displayContact()">
 
-  <!-- <div class="container"> -->
-     <header>Address Book</header>
+  <header>Address Book</header>
 
-    <div class="topnav">
-        <ul>
+  <div class="topnav">
+    <ul>
 
-          <li><a href="#">HOME</a></li>
-          <li><a href="#" onclick="openDialog()">+ADD</a></li>
-        </ul>
-        <div class="imagee">
-            <img src="./assets/blog-icon.png">
-        </div>
+      <li><a href="#">HOME</a></li>
+      <li><a href="#" onclick="openDialog()">+ADD</a></li>
+    </ul>
+    <div class="imagee">
+      <img src="./assets/blog-icon.png">
     </div>
-    <dialog id="dialogBox" class="dialog-closed">
-      <form>
-        <span class="close-icon" onclick="closeDialog()">&#x2716;</span>
-        <div class="form-group ">
-          <label for="name">Name:</label>
-          <input type="text" id="name" class="name">
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" class="email">
-        </div>
-        <div class="joining">
-          <div class="mobilee">
-            <label for="mobile">Mobile:</label>
-            <input type="tel" id="mobile" class="mobile">
-          </div>
-          <div class="landline">
-            <label for="landline">Landline:</label>
-            <input type="tel" id="landline">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="website">Website:</label>
-          <input type="text" id="website">
-        </div>
-        <div class="form-group">
-          <label for="address">Address:</label>
-          <textarea id="address" rows="4"></textarea>
-        </div>
-
-      </form>
-      <div class="buttons">
-        <button id="addUpdateButton" onclick="addOrUpdateContact()" class="add-update">Add</button>
+  </div>
+  <dialog id="dialogBox" class="dialog-closed">
+    <form>
+      <span class="close-icon" onclick="closeDialog()">&#x2716;</span>
+      <div class="form-group ">
+        <label for="name">Name:</label>
+        <input type="text" id="name" class="name">
       </div>
-    </dialog>
-    <div class="showContacts">
-      <div class="contacts-container">
-        <h4>CONTACTS</h4>
-        <div id="contactList" class="contactLists"></div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" class="email">
       </div>
-      <div id="detailsBox" class="detailsBox">
-        <div id="contactDetails" class="contact-details">
-          <b>
-            <h1>
-              <p id="cname" class="name"></p>
-            </h1>
-          </b>
-          <div class="editDeleteButtons">
-            <div class="editicon" id="editButton" onclick="editButton()">
-              <img src="assets/Edit-icon.png" class="editicon">
-              <span class="edittext">EDIT</span>
-            </div>
-            <div class="deleteicon" id="deleteButton" onclick="deleteButton()">
-              <img src="assets/delete2.png" class="deleteicon">
-              <span class="deleteText">DELETE</span>
-            </div>
-          </div>
-          <p id="cemail" class="email">Email:</p>
-          <p id="cmobile" class="mobile">Mobile</p>
-          <p id="clandline" class="landline">Landline: </p>
-          <p id="cwebsite" class="website">Website:</p>
-          <p id="caddress" class="address">Address:</p>
+      <div class="joining">
+        <div class="mobilee">
+          <label for="mobile">Mobile:</label>
+          <input type="tel" id="mobile" class="mobile">
         </div>
+        <div class="landline">
+          <label for="landline">Landline:</label>
+          <input type="tel" id="landline">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="website">Website:</label>
+        <input type="text" id="website">
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" rows="4"></textarea>
+      </div>
 
-      
+    </form>
+    <div class="buttons">
+      <button id="addUpdateButton" onclick="addOrUpdateContact()" class="add-update">Add</button>
+    </div>
+  </dialog>
+  <div class="showContacts">
+    <div class="contacts-container">
+      <h4>CONTACTS</h4>
+      <div id="contactList" class="contactLists"></div>
+    </div>
+    <div id="detailsBox" class="detailsBox">
+      <div id="contactDetails" class="contact-details">
+        <b>
+          <h1>
+            <p id="cname" class="name"></p>
+          </h1>
+        </b>
+        <div class="editDeleteButtons">
+          <div class="editicon" id="editButton" onclick="editButton()">
+            <img src="assets/Edit-icon.png" class="editicon">
+            <span class="edittext">EDIT</span>
+          </div>
+          <div class="deleteicon" id="deleteButton" onclick="deleteButton()">
+            <img src="assets/delete2.png" class="deleteicon">
+            <span class="deleteText">DELETE</span>
+          </div>
+        </div>
+        <p id="cemail" class="email">Email:</p>
+        <p id="cmobile" class="mobile">Mobile:</p>
+        <p id="clandline" class="landline">Landline: </p>
+        <p id="cwebsite" class="website">Website:</p>
+        <p id="caddress" class="address">Address:</p>
       </div>
     </div>
+  </div>
 </body>
+
 </html>

@@ -35,10 +35,10 @@ class ContactService {
       return this.contacts.find((contact) => contact.id === id);
     }
     generateUniqueId() {
-      let idCounter = Number(localStorage.getItem('idCounter'));
-      idCounter = idCounter ? idCounter : 0;
-      idCounter++;
-      localStorage.setItem('idCounter', idCounter.toString());
-      return idCounter.toString();
+      let id = Number(localStorage.getItem('id'));
+      id = id ? id : 0;
+      id++;
+      localStorage.setItem('id', id.toString());
+      return id.toString();
     }
 }
