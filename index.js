@@ -102,8 +102,8 @@ function openEditDialog(contact) {
   openDialog();
 }
 function closeDetailsBox() {
-  var fullDetailsBox = document.getElementById('fullDetailsBox');
-  fullDetailsBox.innerHTML = '';
+  var detailsBox = document.getElementById('detailsBox');
+  detailsBox.innerHTML = '';
 }
 function displayContact() {
   var contacts = JSON.parse(localStorage.getItem('contacts')) || [];
@@ -122,9 +122,9 @@ function showFullDetails(id) {
   let contact = contactService.getContactById(id);
   let editButton = document.getElementById('editButton');
   var deleteButton = document.getElementById('deleteButton');
-  let fullDetailsBox = document.getElementById("fullDetailsBox");
-  fullDetailsBox.classList.add("visible");
-  fullDetailsBox.classList.remove("hidden");
+  let detailsBox = document.getElementById("detailsBox");
+  detailsBox.classList.add("visible");
+  detailsBox.classList.remove("hidden");
   let nameElement = document.getElementById("cname");
   nameElement.textContent = contact.name;
   let emailElement = document.getElementById("cemail");
@@ -178,10 +178,10 @@ function deleteContactById(id) {
     let deletedContactElement = document.querySelector(`.contact[data-id="${id}"]`);
     if (deletedContactElement) {
       deletedContactElement.remove();
-      let fullDetailsBox = document.getElementById("fullDetailsBox");
-      if (fullDetailsBox) {
-        fullDetailsBox.classList.remove("visible");
-        fullDetailsBox.classList.add("hidden");
+      let detailsBox = document.getElementById("detailsBox");
+      if (detailsBox) {
+        detailsBox.classList.remove("visible");
+        detailsBox.classList.add("hidden");
       } else {
         console.log('Full details box not found');
       }

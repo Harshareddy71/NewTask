@@ -2,9 +2,9 @@ body {
   margin: 0px;
   padding: 0px;
 }
-.container {
+/* .container {
   margin: 0px;
-}
+} */
 .contact {
   margin-left: 2px;
   border: 1px solid darkgray;
@@ -99,7 +99,7 @@ h4 {
 .showContacts {
   display: flex;
 }
-#fullDetailsBox {
+#detailsBox {
   width: 300px;
   margin-top: 25px;
   margin-left: 9em;
@@ -181,17 +181,17 @@ h4 {
   padding: 30px;
   width: 550px;
   box-shadow: 0 0 10px rgba(69, 68, 68, 0.86);
-  /* z-index: 1000; */
+  z-index: 1000;
 }
 .dialog-close {
   display: none;
 }
 
-#fullDetailsBox.visible {
+#detailsBox.visible {
   display: block;
 }
 
-#fullDetailsBox.hidden {
+#detailsBox.hidden {
   display: none;
 }
 
