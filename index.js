@@ -1,55 +1,40 @@
 var contactService = new ContactService();
+function getContactDetails() {
+  var details = {};
+  details.name = document.getElementById('name').value;
+  details.email = document.getElementById('email').value;
+  details.mobile = document.getElementById('mobile').value;
+  details.landline = document.getElementById('landline').value;
+  details.website = document.getElementById('website').value;
+  details.address = document.getElementById('address').value;
+  return details;
+}
 function addContact() {
-  var name = document.getElementById('name').value;
-  var email = document.getElementById('email').value;
-  var mobile = document.getElementById('mobile').value;
-  var landline = document.getElementById('landline').value;
-  var website = document.getElementById('website').value;
-  var address = document.getElementById('address').value;
-  if (!isValidMobile(mobile)) {
+  var details = getContactDetails();
+  if (!isValidMobile(details.mobile)) {
     alert("Please enter a valid mobile number.");
     return;
   }
-  if (!isValidEmail(email)) {
+  if (!isValidEmail(details.email)) {
     alert("Please enter a valid email address.");
     return;
   }
-  let details = {};
- details.name = name;
- details.email = email;
- details.mobile = mobile;
- details.landline = landline;
- details.website = website;
- details.address = address;
- var  contact = new Contact(details);
+  var contact = new Contact(details);
   contactService.saveContact(contact);
-  clearFields();
+  emptyFields();
   closeDialog();
   var contactElement = createContactList(contact);
   var contactList = document.getElementById('contactList');
   contactList.appendChild(contactElement);
 }
 function updateContact() {
-  let name = document.getElementById('name').value;
-  let email = document.getElementById('email').value;
-  let mobile = document.getElementById('mobile').value;
-  let landline = document.getElementById('landline').value;
-  let website = document.getElementById('website').value;
-  let address = document.getElementById('address').value;
-  let addButton = document.getElementById('addUpdateButton');
-  let details = {};
-  details.id = document.getElementById('addUpdateButton').dataset.contactId
-  details.name = name;
-  details.email = email;
-  details.mobile = mobile;
-  details.landline = landline;
-  details.website = website;
-  details.address = address;
+  var details = getContactDetails();
+  details.id = document.getElementById('addUpdateButton').dataset.contactId;
   let updatedContact = new Contact(details);
-  console.log('hfdfhfdjgdhjk',updatedContact)
+  console.log('hfdfhfdjgdhjk', updatedContact)
   contactService.updateContact(updatedContact);
   closeDialog();
-  clearFields();
+  emptyFields();
   showFullDetails(addButton?.dataset.contactId ?? '')
   let updatedContactElement = updateContactList(updatedContact);
   let contactList = document.getElementById('contactList');
@@ -59,10 +44,70 @@ function updateContact() {
     contactList.replaceChild(updatedContactElement, existingContactElement);
   }
 }
+// function addContact() {
+//   var name = document.getElementById('name').value;
+//   var email = document.getElementById('email').value;
+//   var mobile = document.getElementById('mobile').value;
+//   var landline = document.getElementById('landline').value;
+//   var website = document.getElementById('website').value;
+//   var address = document.getElementById('address').value;
+//   if (!isValidMobile(mobile)) {
+//     alert("Please enter a valid mobile number.");
+//     return;
+//   }
+//   if (!isValidEmail(email)) {
+//     alert("Please enter a valid email address.");
+//     return;
+//   }
+//   let details = {};
+//   details.name = name;
+//   details.email = email;
+//   details.mobile = mobile;
+//   details.landline = landline;
+//   details.website = website;
+//   details.address = address;
+//   var contact = new Contact(details);
+//   contactService.saveContact(contact);
+//   emptyFields();
+//   closeDialog();
+//   var contactElement = createContactList(contact);
+//   var contactList = document.getElementById('contactList');
+//   contactList.appendChild(contactElement);
+// }
+// function updateContact() {
+//   let name = document.getElementById('name').value;
+//   let email = document.getElementById('email').value;
+//   let mobile = document.getElementById('mobile').value;
+//   let landline = document.getElementById('landline').value;
+//   let website = document.getElementById('website').value;
+//   let address = document.getElementById('address').value;
+//   let addButton = document.getElementById('addUpdateButton');
+//   let details = {};
+//   details.id = document.getElementById('addUpdateButton').dataset.contactId
+//   details.name = name;
+//   details.email = email;
+//   details.mobile = mobile;
+//   details.landline = landline;
+//   details.website = website;
+//   details.address = address;
+//   let updatedContact = new Contact(details);
+//   console.log('hfdfhfdjgdhjk', updatedContact)
+//   contactService.updateContact(updatedContact);
+//   closeDialog();
+//   emptyFields();
+//   showFullDetails(addButton?.dataset.contactId ?? '')
+//   let updatedContactElement = updateContactList(updatedContact);
+//   let contactList = document.getElementById('contactList');
+//   let existingContactElement = document.querySelector(`.contact[data-id="${updatedContact.id}"]`);
+//   console.log('hjjjjjjhhh', existingContactElement)
+//   if (existingContactElement) {
+//     contactList.replaceChild(updatedContactElement, existingContactElement);
+//   }
+// }
 function createContactList(contact) {
   var contactElement = document.createElement('div');
   contactElement.className = 'contact';
-contactElement.dataset.id = contact.id;
+  contactElement.dataset.id = contact.id;
   var nameElement = document.createElement('div');
   nameElement.className = 'contact-name';
   nameElement.textContent = contact.name;
@@ -98,7 +143,7 @@ function addOrUpdateContact() {
   }
 }
 function openEditDialog(contact) {
-  console.log('nbcjhhvdn',contact)
+  console.log('nbcjhhvdn', contact)
   document.getElementById('name').value = contact.name;
   document.getElementById('email').value = contact.email;
   document.getElementById('mobile').value = contact.mobile;
@@ -185,7 +230,15 @@ function closeDialog() {
 function cancelDialog() {
   dialog.classList.add("hidden");
   document.getElementById("error_message").innerText = "";
-  clearFormFields();
+  emptyFields();
+}
+function emptyFields() {
+  document.getElementById('name').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('mobile').value = '';
+  document.getElementById('landline').value = '';
+  document.getElementById('website').value = '';
+  document.getElementById('address').value = '';
 }
 function deleteContactById(id) {
   console.log('Deleting Contact ID:', id);
@@ -207,12 +260,4 @@ function deleteContactById(id) {
       console.log('Deleted contact element not found in the DOM');
     }
   }
-}
-function clearFields() {
-  document.getElementById('name').value = '';
-  document.getElementById('email').value = '';
-  document.getElementById('mobile').value = '';
-  document.getElementById('landline').value = '';
-  document.getElementById('website').value = '';
-  document.getElementById('address').value = '';
 }
