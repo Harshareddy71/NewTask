@@ -136,12 +136,10 @@ h4 {
   display: flex;
   column-gap: 18px;
 }
-
 .editicon, .deleteicon {
   display: flex;
   align-items: center;
 }
-
 .editicon img {
   width: 8px;
   height: 15px;
@@ -156,7 +154,6 @@ h4 {
 .edittext, .deleteText {
   font-size: small;
 }
-
 .contact-name {
   font-size: 30px;
   font-weight: lighter;
@@ -191,11 +188,9 @@ h4 {
 #detailsBox.hidden {
   display: none;
 }
-
 .contact-email {
   font-size: 15px;
 }
-
 .contact-mobile {
   font-size: 15px;
   margin-top: -4px;
